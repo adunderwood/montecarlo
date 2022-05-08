@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+
+        <script src="montecarlo.js"></script>
+        <script>
+            // browser based monte carlo data generator
+            function buildWheel_1() {
+                var wheel = [];
+
+                wheel.push(buildArray(0, 15));
+                wheel.push(buildArray(1, 50));
+                wheel.push(buildArray(2, 20));
+                wheel.push(buildArray(3, 10));
+                wheel.push(buildArray("!", 5));
+
+                wheel = joinArrays(wheel);
+                return wheel;
+            }
+
+            function buildWheel_2() {
+                var wheel = [];
+
+                wheel.push(buildArray(0, 25));
+                wheel.push(buildArray(2, 55));
+                wheel.push(buildArray(3, 10));
+                wheel.push(buildArray("!", 10));
+
+                wheel = joinArrays(wheel);
+                return wheel;
+            }
+
+            function buildWheel_3() {
+                var wheel = [];
+
+                wheel.push(buildArray(0, 25));
+                wheel.push(buildArray("split", 25));
+                wheel.push(buildArray(3, 25));
+                wheel.push(buildArray("!", 25));
+
+                wheel = joinArrays(wheel);
+                return wheel;
+            }
+
+        </script>
+
+    </head>
+
+    <body id="page">
+
+        <script>
+            var number_of_spins = 100;
+            
+            var wheel_1 = buildWheel_1();
+            var wheel_2 = buildWheel_2();
+            var wheel_3 = buildWheel_3();
+
+            var wheels = [wheel_1, wheel_2, wheel_3];
+            var output = monteCarlo(number_of_spins, wheels);
+
+            page = document.getElementById('page');
+            page.append(output);
+
+        </script>
+
+    </body>
+</html>
